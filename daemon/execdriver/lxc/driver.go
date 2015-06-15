@@ -427,10 +427,14 @@ func createDeviceNodes(rootfs string, nodesToCreate []*configs.Device) error {
 	oldMask := syscall.Umask(0000)
 	defer syscall.Umask(oldMask)
 
-	for _, node := range nodesToCreate {
-		if err := createDeviceNode(rootfs, node); err != nil {
-			return err
+	if _, err := cgroups.FindCgroupMountpoint("devices"); err == nil {
+		for _, node := range nodesToCreate {
+			if err := createDeviceNode(rootfs, node); err != nil {
+				return err
+			}
 		}
+	} else {
+		logrus.Warnf("Devices cgroup missing. Skipping creation of devices")
 	}
 	return nil
 }
