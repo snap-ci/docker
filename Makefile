@@ -45,6 +45,8 @@ binary: build
 cross: build
 	$(DOCKER_RUN_DOCKER) hack/make.sh binary cross
 
+ubuntu: build
+	$(DOCKER_RUN_DOCKER) hack/make.sh binary ubuntu
 
 test: build
 	$(DOCKER_RUN_DOCKER) hack/make.sh binary cross test-unit test-integration-cli test-docker-py
