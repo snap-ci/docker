@@ -54,6 +54,11 @@ func UnpackLayer(dest string, layer ArchiveReader) (size int64, err error) {
 			}
 		}
 
+		// Skip device files
+		if hdr.Typeflag == tar.TypeChar || hdr.Typeflag == tar.TypeBlock {
+			continue
+		}
+
 		// Skip AUFS metadata dirs
 		if strings.HasPrefix(hdr.Name, ".wh..wh.") {
 			// Regular files inside /.wh..wh.plnk can be used as hardlink targets
