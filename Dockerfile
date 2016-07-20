@@ -50,8 +50,6 @@ RUN apt-get update && apt-get install -y \
 	python-pip \
 	python-websocket \
 	reprepro \
-	ruby-2.2 \
-  ruby-2.2-dev \
 	s3cmd=1.1.0* \
 	ubuntu-zfs \
 	libzfs-dev \
