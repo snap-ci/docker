@@ -58,9 +58,8 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get install -y software-properties-common --no-install-recommends
 RUN apt-add-repository ppa:brightbox/ruby-ng
 RUN apt-get update && apt-get install -y \
-	reprepro \
-	ruby-2.2 \
-  ruby-2.2-dev \
+	ruby2.2 \
+  ruby2.2-dev \
 	--no-install-recommends
 
 # Get lvm2 source for compiling statically
