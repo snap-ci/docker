@@ -55,7 +55,7 @@ RUN apt-get update && apt-get install -y \
 	libzfs-dev \
 	--no-install-recommends
 
-RUN apt-get install software-properties-common
+RUN apt-get install -y software-properties-common --no-install-recommends
 RUN apt-add-repository ppa:brightbox/ruby-ng
 RUN apt-get update && apt-get install -y \
 	reprepro \
