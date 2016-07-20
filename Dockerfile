@@ -28,8 +28,6 @@ MAINTAINER Tianon Gravi <admwiggin@gmail.com> (@tianon)
 
 RUN	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net --recv-keys E871F18B51E0147C77796AC81196BA81F6B0FC61
 RUN	echo deb http://ppa.launchpad.net/zfs-native/stable/ubuntu trusty main > /etc/apt/sources.list.d/zfs.list
-RUN apt-get install software-properties-common
-RUN apt-add-repository ppa:brightbox/ruby-ng
 
 # Packaged dependencies
 RUN apt-get update && apt-get install -y \
@@ -57,6 +55,14 @@ RUN apt-get update && apt-get install -y \
 	s3cmd=1.1.0* \
 	ubuntu-zfs \
 	libzfs-dev \
+	--no-install-recommends
+
+RUN apt-get install software-properties-common
+RUN apt-add-repository ppa:brightbox/ruby-ng
+RUN apt-get update && apt-get install -y \
+	reprepro \
+	ruby-2.2 \
+  ruby-2.2-dev \
 	--no-install-recommends
 
 # Get lvm2 source for compiling statically
